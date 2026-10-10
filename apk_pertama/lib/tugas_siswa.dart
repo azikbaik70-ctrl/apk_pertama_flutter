@@ -5,11 +5,27 @@ class TugasSiswa extends StatefulWidget {
   const TugasSiswa({super.key});
 
   @override
-  State<TugasSiswa> createState() => _TugasSiswaState();
+  State<TugasSiswa> createState() => _TugasSiswaState(); 
 }
+class ItemTugas {
+    final String judul;
+    final String kategori;
+    final bool isSelesai;
+    final DateTime tanggalDibuat;
+
+    ItemTugas({
+      required this.judul,
+      required this.kategori,
+      required this.isSelesai,
+      required this.tanggalDibuat,
+    });
+}
+  
 
 class _TugasSiswaState extends State<TugasSiswa> {
   int indexSubMenu = 0;
+  String filterWaktuAktif = 'semua'; // Pilihan: 'semua', 'seminggu', 'dua_bulan'
+
 
   final List<Map<String, dynamic>> subMenuTugas = [
     {"nama": "IPA"},
@@ -22,6 +38,10 @@ class _TugasSiswaState extends State<TugasSiswa> {
     {"nama": "IPS", "detail": "tugas"},
     {"nama": "Seni Budaya", "detail": "tugas"},
     {"nama": "B.Sunda", "detail": "tugas"},
+  ];
+  final List<ItemTugas> masterDaftarTugas = [
+    ItemTugas(judul: 'PR Konstanta Halaman 32', kategori: 'MTK', isSelesai: true, tanggalDibuat: DateTime.now().subtract(const Duration(days: 3))),
+    ItemTugas(judul: 'PR  Biantara Hal 20', kategori: 'B.Sunda', isSelesai: false, tanggalDibuat: DateTime.now().subtract(const Duration(days: 5))),
   ];
 
   @override

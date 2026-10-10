@@ -53,7 +53,7 @@ class _MemasukanTugasState extends State<MemasukanTugas> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  "Tambah Tugas Baru",
+                  "Memasukan Tugas",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,

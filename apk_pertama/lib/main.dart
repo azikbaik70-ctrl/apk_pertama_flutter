@@ -30,33 +30,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
 
   int indexSubMenu = 0;
 
-  final List<Map<String, dynamic>> dataMenu = [
-    {
-      "nama": "Guru",
-      "subMenu": [
-        {"nama": "Bapak Eka", "detail": "Pak Eka Sebagai Guru"},
-      ],
-    },
-    {"nama": "Tugas", "subMenu": []},
-    {
-      "nama": "Materi yang di pelajarin",
-      "subMenu": [
-        {"nama": "Ipa"},
-      ],
-    },
-    {
-      "nama": "Catatan Semua Mapel",
-      "subMenu": [
-        {"nama": "mtk"},
-      ],
-    },
-    {
-      "nama": "Siswa-siswi",
-      "subMenu": [
-        {"nama": "aziq"},
-      ],
-    },
-  ];
+  
 
   @override
   Widget build(BuildContext context) {

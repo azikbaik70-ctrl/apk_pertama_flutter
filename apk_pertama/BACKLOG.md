@@ -3,7 +3,7 @@
 ## Fitur yang ingin di tambahin
 - Tiket 1: Form Tambah tugas (simpen + tampil)
 - Tiket 2: Cheklist Tugas Selesai
-- Tiket 3: Membuat file tugas_siswa.dart menghasilkan output card, jadi saat kita klik expanded yang bagian kiri yaitu button mapel yang ungu background nya saat di klik misal ipa terus itu akan menghasilkan output yang output  nya yaitu penjelasan tentang  tugas nya apa dan halaman berapa jadi pas kita klikk lagi ccard nya itu akan menghasilkan card baru lagi di mana  card baru ini  yang nampilin apakah tugas kita sudah di kumpulin atau belum.
+- Tiket 3: Membuat file tugas_siswa.dart menghasilkan output card, jadi saat kita klik expanded yang bagian kiri yaitu button mapel yang ungu background nya saat di klik misal ipa terus itu akan menghasilkan output yang output  nya yaitu penjelasan tentang  tugas nya apa dan halaman berapa jadi pas kita klikk lagi ccard nya itu akan menghasilkan card baru lagi di mana  card baru ini  yang nampilin apakah tugas kita sudah di kumpulin atau belum, atau pun kita ingin tau tugas kita dari dua bulan yang lalu 
 
 - Tiket 4: Menghubungkan file tugas_siswa.dart dengan  file menambahkan_tugas.dart jadi si file file tugas_siswa.dat menjadi tau apakah tugas kita sudah di serahin atau belum dan sesuai atau belum dengan tugas yang ada di file tugas_siswa.dart, jika sudah maka output dari card yang ke dua akan menghasilkan output tugas selsai jika belum maka akan menghasilkan output tugas beleum selesai.
 
@@ -25,3 +25,9 @@
 
 - Tiket 13:
 
+###
+- NOTE::
+- file yang di tugas_siswa.dart itu make data dami jadi saat masih di localhost kita ngbuat data dami yaitu menambahkan tugas padahal seharusnya  itu tugas  guru nah kalo udah di publish / jalan di di production itu bakalan di rubah menjadi data asli dan tidak memasukan data dami lagi yang tadi jadi hanya untuk sementara 
+
+#### Ticket yang sedang berjalan 
+- Tiket 3 

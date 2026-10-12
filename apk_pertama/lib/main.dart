@@ -36,7 +36,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(56.0),
+        preferredSize: const Size.fromHeight(44.0),
         child: ClipRRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 11.0, sigmaY: 11.0),
@@ -47,33 +47,33 @@ class _HalamanUtamaState extends State<HalamanUtama> {
 
                 children: [
                   Container(
-                    width: 16,
-                    height: 16,
+                    width: 12,
+                    height: 12,
                     decoration: BoxDecoration(
                       color: Colors.grey.withValues(alpha: 0.3),
                       shape: BoxShape.circle,
                     ),
                   ),
-                  SizedBox(width: 14),
+                  SizedBox(width: 11),
                   Container(
-                    width: 16,
-                    height: 16,
+                    width: 12,
+                    height: 12,
                     decoration: BoxDecoration(
                       color: Colors.grey.withValues(alpha: 0.4),
                       shape: BoxShape.circle,
                     ),
                   ),
-                  SizedBox(width: 14),
+                  SizedBox(width: 11),
 
                   Container(
-                    width: 16,
-                    height: 16,
+                    width: 12,
+                    height: 12,
                     decoration: BoxDecoration(
                       color: Colors.grey.withValues(alpha: 0.4),
                       shape: BoxShape.circle,
                     ),
                   ),
-                  const SizedBox(width: 14),
+                  const SizedBox(width: 11),
                   const Text(
                     'SMP Negeri 1 Bogor',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),

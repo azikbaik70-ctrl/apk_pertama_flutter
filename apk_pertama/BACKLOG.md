@@ -21,7 +21,7 @@
 
 - Tiket 11: Menambahkan fitur mengsave foto profile dan bio , jadi user bisa mengedit bio nya misal kata kata  motivasi.
 
-- Tiket 12: Membuat fitu mendeteksi adanya bio / foto profile apakah bio tersebut menggunakan kata kata kasar or tidak dengan menggunakan GeminiAi untuk mendeteksi.
+- Tiket 12: Membuat fitur mendeteksi adanya bio / foto profile apakah bio tersebut menggunakan kata kata kasar or tidak dengan menggunakan GeminiAi untuk mendeteksi.
 
 - Tiket 13:
 

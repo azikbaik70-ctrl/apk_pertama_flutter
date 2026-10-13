@@ -637,11 +637,7 @@ class _TugasSiswaState extends State<TugasSiswa> {
           flex: 2,
           child: Container(
             decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Color(0xFF8E24AA), Color(0xFF4A148C)],
-              ),
+              color: Color(0xFF2E0854),
             ),
             child: Column(
               children: [

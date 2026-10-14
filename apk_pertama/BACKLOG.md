@@ -5,7 +5,7 @@
 - Tiket 2: Cheklist Tugas Selesai
 - Tiket 3: Membuat file tugas_siswa.dart menghasilkan output card, jadi saat kita klik expanded yang bagian kiri yaitu button mapel yang ungu background nya saat di klik misal ipa terus itu akan menghasilkan output yang output  nya yaitu penjelasan tentang  tugas nya apa dan halaman berapa jadi pas kita klikk lagi ccard nya itu akan menghasilkan card baru lagi di mana  card baru ini  yang nampilin apakah tugas kita sudah di kumpulin atau belum, atau pun kita ingin tau tugas kita dari dua bulan yang lalu 
 
-- Tiket 4: Menghubungkan file tugas_siswa.dart dengan  file menambahkan_tugas.dart jadi si file file tugas_siswa.dat menjadi tau apakah tugas kita sudah di serahin atau belum dan sesuai atau belum dengan tugas yang ada di file tugas_siswa.dart, jika sudah maka output dari card yang ke dua akan menghasilkan output tugas selsai jika belum maka akan menghasilkan output tugas beleum selesai.
+- Tiket 4: Menghubungkan file tugas_siswa.dart dengan  file menambahkan_tugas.dart jadi si file file tugas_siswa.dart menjadi tau apakah tugas kita sudah di serahin atau belum dan sesuai atau belum dengan tugas yang ada di file tugas_siswa.dart, jika sudah maka output dari card yang ke dua akan menghasilkan output tugas selsai jika belum maka akan menghasilkan output tugas beleum selesai.
 
 - Tiket 5: Membuat fitur untuk memfoto tugas kita jadi tuh kalo kita ingin tugas kita ingin di serhain kita harus di foto supaya menjadi barang bukti kalo kita sudah selseai
 

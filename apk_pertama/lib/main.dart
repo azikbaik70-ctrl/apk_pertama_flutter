@@ -110,7 +110,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                     icon: const Icon(Icons.co_present),
                     color: indexMenu == 0
                         ? Colors.white
-                        : Colors.white.withValues(alpha: 0.4),
+                        : Colors.white.withValues(alpha: 0.8),
                     iconSize: 24,
                     onPressed: () {
                       setState(() {
@@ -124,7 +124,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                     icon: const Icon(Icons.edit_note),
                     color: indexMenu == 1
                         ? Colors.white
-                        : Colors.white.withValues(alpha: 0.4),
+                        : Colors.white.withValues(alpha: 0.8),
                     iconSize: 24,
                     onPressed: () {
                       setState(() {
@@ -138,7 +138,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                     icon: const Icon(Icons.menu_book),
                     color: indexMenu == 2
                         ? Colors.white
-                        : Colors.white.withValues(alpha: 0.4),
+                        : Colors.white.withValues(alpha: 0.8),
                     iconSize: 24,
                     onPressed: () {
                       setState(() {
@@ -152,7 +152,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                     icon: const Icon(Icons.assignment),
                     color: indexMenu == 3
                         ? Colors.white
-                        : Colors.white.withValues(alpha: 0.4),
+                        : Colors.white.withValues(alpha: 0.8),
                     iconSize: 24,
                     onPressed: () {
                       setState(() {
@@ -166,7 +166,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                     icon: const Icon(Icons.person),
                     color: indexMenu == 4
                         ? Colors.white
-                        : Colors.white.withValues(alpha: 0.4),
+                        : Colors.white.withValues(alpha: 0.8),
                     iconSize: 24,
                     onPressed: () {
                       setState(() {
@@ -180,7 +180,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                     icon: const Icon(Icons.add_task),
                     color: indexMenu == 5
                         ? Colors.white
-                        : Colors.white.withValues(alpha: 0.4),
+                        : Colors.white.withValues(alpha: 0.8),
                     iconSize: 24,
                     onPressed: () {
                       setState(() {

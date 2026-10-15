@@ -95,6 +95,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
         ),
       ),
 
+      
       body: Row(
         children: [
           SizedBox(
@@ -107,10 +108,17 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   IconButton(
+                   icon: const Icon(Icons.school_outlined),
+                   color: indexMenu == 0
+                   ? Colors.white
+                   : Colors.white.withValues(alpha: 0.8)
+                  )
+                  IconButton(
                     icon: const Icon(Icons.co_present),
                     color: indexMenu == 0
                         ? Colors.white
                         : Colors.white.withValues(alpha: 0.8),
+                        
                     iconSize: 24,
                     onPressed: () {
                       setState(() {

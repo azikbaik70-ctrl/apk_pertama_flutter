@@ -107,32 +107,25 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  IconButton(
+                  IconButton (
                    icon: const Icon(Icons.school_outlined),
                    color: indexMenu == 0
                    ? Colors.white
-                   : Colors.white.withValues(alpha: 0.8)
-                  )
+                   : Colors.white.withValues(alpha: 0.8),
+                   iconSize: 26,
+                   onPressed: () {
+                    setState(() {
+                      indexMenu = 0;
+                      indexSubMenu = 1;
+                    });
+                   },
+                  ),
                   IconButton(
                     icon: const Icon(Icons.co_present),
-                    color: indexMenu == 0
-                        ? Colors.white
-                        : Colors.white.withValues(alpha: 0.8),
-                        
-                    iconSize: 24,
-                    onPressed: () {
-                      setState(() {
-                        indexMenu = 0;
-                        indexSubMenu = 0;
-                      });
-                    },
-                  ),
-                  const SizedBox(height: 15),
-                  IconButton(
-                    icon: const Icon(Icons.edit_note),
                     color: indexMenu == 1
                         ? Colors.white
                         : Colors.white.withValues(alpha: 0.8),
+                        
                     iconSize: 24,
                     onPressed: () {
                       setState(() {
@@ -143,7 +136,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                   ),
                   const SizedBox(height: 15),
                   IconButton(
-                    icon: const Icon(Icons.menu_book),
+                    icon: const Icon(Icons.edit_note),
                     color: indexMenu == 2
                         ? Colors.white
                         : Colors.white.withValues(alpha: 0.8),
@@ -157,7 +150,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                   ),
                   const SizedBox(height: 15),
                   IconButton(
-                    icon: const Icon(Icons.assignment),
+                    icon: const Icon(Icons.menu_book),
                     color: indexMenu == 3
                         ? Colors.white
                         : Colors.white.withValues(alpha: 0.8),
@@ -171,7 +164,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                   ),
                   const SizedBox(height: 15),
                   IconButton(
-                    icon: const Icon(Icons.person),
+                    icon: const Icon(Icons.assignment),
                     color: indexMenu == 4
                         ? Colors.white
                         : Colors.white.withValues(alpha: 0.8),
@@ -185,7 +178,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                   ),
                   const SizedBox(height: 15),
                   IconButton(
-                    icon: const Icon(Icons.add_task),
+                    icon: const Icon(Icons.person),
                     color: indexMenu == 5
                         ? Colors.white
                         : Colors.white.withValues(alpha: 0.8),
@@ -193,6 +186,20 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                     onPressed: () {
                       setState(() {
                         indexMenu = 5;
+                        indexSubMenu = 0;
+                      });
+                    },
+                  ),
+                  const SizedBox(height: 15),
+                  IconButton(
+                    icon: const Icon(Icons.add_task),
+                    color: indexMenu == 6
+                        ? Colors.white
+                        : Colors.white.withValues(alpha: 0.8),
+                    iconSize: 24,
+                    onPressed: () {
+                      setState(() {
+                        indexMenu = 6;
                         indexSubMenu = 0;
                       });
                     },

@@ -11,7 +11,7 @@
 
 - Tiket 6: Menambahkan fitur AI ,jadi saat mengirimkan tugas AI tersebut akan mendeteksi apakah sesuai atau tidak dengan tugas yang di minta di file tugas_siswa.dart jadi tuh nanti kita di file tugas_siswa.dart ada penjelasanya halaman berapa terus tentang apa, nanti Ai tersbut hanya membaca isi tugas  file tugas_siswa.dart apakah sesuai dengan siswa/siswi yang mengirim tugas tersebut
 
-- Tiket 7: Membuat halaman login ,lalu membuat akun dan password khusus untuk guru supaya memiliki hak akses, seperti menambahkan tugas
+- Tiket 7: Membuat halaman login dan  register,lalu membuat akun dan password khusus untuk guru supaya memiliki hak akses, seperti menambahkan tugas
 
 - Tiket 8:  menjelaskan  detail siswa  di file siswa_siswi cotoh abdurraziq hanan menyukai mata pelajaran mtk di karenakan sering mendaptakan niilai yang baguss dan problem solving yang keren, lalu membuat menampilkan jumlah tugas yang sudah di buat,menampilkan berapa hari berturut-turut siswa tersebut mungumplkan tugas sebelum deadline, lalu menjelaskan  detail siswa peran siswa/ siswi tersebut di kelas contoh : temen saya  azril adalah ketua kelas.
 
@@ -30,4 +30,7 @@
 - file yang di tugas_siswa.dart itu make data dami jadi saat masih di localhost kita ngbuat data dami yaitu menambahkan tugas padahal seharusnya  itu tugas  guru nah kalo udah di publish / jalan di di production itu bakalan di rubah menjadi data asli dan tidak memasukan data dami lagi yang tadi jadi hanya untuk sementara 
 
 #### Ticket yang sedang berjalan 
-- Tiket 3 
+- Tiket 7
+
+#### Ticket yang sudah di selsesaikan 
+- Tiket 3

@@ -49,9 +49,17 @@ class _loginpageState extends State<loginpage> {
                   String username = _usernameController.text;
                   String password = _passwordController.text;
                   print('Username: $username, Password: $password');
+                  Navigator.pushReplacementNamed(context, '/home');
                 },
                 child: const Text('login'),
               ),
+            ),
+            const SizedBox(height: 12),
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/register');
+              },
+              child: const Text('Belum punya akun? Register'),
             )
           ],
         ),

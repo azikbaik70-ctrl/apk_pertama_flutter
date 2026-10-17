@@ -14,7 +14,7 @@ class registerPage extends StatefulWidget{
 
     @override
 
-    Widget Build(BuildContext context) {
+    Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
           title: const Text('Register'),
@@ -64,7 +64,9 @@ class registerPage extends StatefulWidget{
                     String password = _passwordController.text;
                     String age = _ageController.text;
                     print('Username: $username, Passwrod: $password, age:$age');
+                    Navigator.pop(context);
                   },
+                  child: const Text('register')
                 ),
               )
             ],

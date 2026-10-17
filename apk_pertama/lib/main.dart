@@ -1,5 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:apk_pertama/login.dart';
+import 'package:apk_pertama/register.dart';
 import 'package:apk_pertama/tugas_siswa.dart';
 import 'package:apk_pertama/Catatan_semua_mapel.dart';
 import 'package:apk_pertama/materi_yang_dipelajarin.dart' as materi;
@@ -14,7 +16,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Aplikasi SMPN 1 BOGOR', home: HalamanUtama());
+    return MaterialApp(
+      title: 'Aplikasi SMPN 1 BOGOR',
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => const loginpage(),
+        '/register': (context) => const registerPage(),
+        '/home': (context) => const HalamanUtama(),
+      },
+    );
   }
 }
 
@@ -107,29 +117,16 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  IconButton (
-                   icon: const Icon(Icons.school_outlined),
-                   color: indexMenu == 0
-                   ? Colors.white
-                   : Colors.white.withValues(alpha: 0.8),
-                   iconSize: 26,
-                   onPressed: () {
-                    setState(() {
-                      indexMenu = 0;
-                      indexSubMenu = 1;
-                    });
-                   },
-                  ),
                   IconButton(
                     icon: const Icon(Icons.co_present),
-                    color: indexMenu == 1
+                    color: indexMenu == 0
                         ? Colors.white
                         : Colors.white.withValues(alpha: 0.8),
                         
                     iconSize: 24,
                     onPressed: () {
                       setState(() {
-                        indexMenu = 1;
+                        indexMenu = 0;
                         indexSubMenu = 0;
                       });
                     },
@@ -137,13 +134,13 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                   const SizedBox(height: 15),
                   IconButton(
                     icon: const Icon(Icons.edit_note),
-                    color: indexMenu == 2
+                    color: indexMenu == 1
                         ? Colors.white
                         : Colors.white.withValues(alpha: 0.8),
                     iconSize: 24,
                     onPressed: () {
                       setState(() {
-                        indexMenu = 2;
+                        indexMenu = 1;
                         indexSubMenu = 0;
                       });
                     },

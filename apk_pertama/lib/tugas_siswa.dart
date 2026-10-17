@@ -52,9 +52,10 @@ class _TugasSiswaState extends State<TugasSiswa> {
     {"nama": "Seni Budaya", "kode": "SENBUD"},
     {"nama": "B.Sunda", "kode": "B.SUNDA"},
   ];
-
+ 
   // Ikon untuk tiap mapel (berdasarkan kode)
   final Map<String, IconData> ikonMapel = {
+    
     'IPA': Icons.science,
     'MTK': Icons.calculate,
     'PAI': Icons.menu_book,
@@ -66,6 +67,12 @@ class _TugasSiswaState extends State<TugasSiswa> {
     'SENBUD': Icons.palette,
     'B.SUNDA': Icons.translate,
   };
+
+  // List: tidak perlu key String, langsung tulis icon-nya saja.
+  // Yang paling atas (index 0) = ikon sekolah.
+  final List<IconData> ikonAtas = [
+    Icons.school_outlined,
+  ];
 
   final List<ItemTugas> masterDaftarTugas = [
     ItemTugas(
@@ -154,6 +161,15 @@ class _TugasSiswaState extends State<TugasSiswa> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Ikon sekolah di paling atas, diambil dari List index 0 (tanpa key String)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: Icon(
+              ikonAtas[0],
+              size: 30,
+              color: const Color(0xFF6A1B9A),
+            ),
+          ),
           // Filter waktu
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,

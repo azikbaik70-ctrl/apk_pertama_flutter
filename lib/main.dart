@@ -1,10 +1,7 @@
 import 'dart:ui';
 import 'dart:convert';
-import 'package:apk_pertama/routers.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:apk_pertama/login.dart';
-import 'package:apk_pertama/register.dart';
 import 'package:apk_pertama/tugas_siswa.dart';
 import 'package:apk_pertama/Catatan_semua_mapel.dart';
 import 'package:apk_pertama/materi_yang_dipelajarin.dart';

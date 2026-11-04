@@ -12,7 +12,20 @@
           "package_name": "com.example.apk_pertama"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "309023960778-s1e5shmk8bgempnl102oo4ndh3jf6vlh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.apk_pertama",
+            "certificate_hash": "288e7a0a65660851893c52a36b5ec6371dd389c8"
+          }
+        },
+        {
+          "client_id": "309023960778-874gbh2s7a3uval6vonl9eoo5v43ej60.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAnlTJqZFjnvFI2MYPHv-c1Hy1w2exmW3M"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309023960778-874gbh2s7a3uval6vonl9eoo5v43ej60.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

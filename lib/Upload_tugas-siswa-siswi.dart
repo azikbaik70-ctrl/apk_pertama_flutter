@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -30,7 +30,7 @@ class _UploadTugasState extends State<UploadTugas> {
     try {
       final XFile? pickedFile = await _picker.pickImage(
         source: ImageSource.gallery,
-        ImageQuailty: 80,
+        imageQuality: 80,
       );
       if (pickedFile != null) {
         setState(() {
@@ -43,4 +43,3 @@ class _UploadTugasState extends State<UploadTugas> {
     }
 
   }
-}

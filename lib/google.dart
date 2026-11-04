@@ -1,7 +1,8 @@
-import 'dart:convert';
+import  'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
+
 
 class GoogleAuthResult {
   final bool isSuccess;
@@ -25,7 +26,7 @@ class GoogleAuthService {
     if (!_isInitialized) {
       try {
         await _googleSignIn.initialize(
-          serverClientId: '369926302441-4sgrjnjek0ek0k6qvchhu01tpc89d0m2.apps.googleusercontent.com',
+          serverClientId: '309023960778-874gbh2s7a3uval6vonl9eoo5v43ej60.apps.googleusercontent.com',
         );
         _isInitialized = true;
       } catch (e) {

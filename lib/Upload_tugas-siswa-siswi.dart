@@ -41,5 +41,29 @@ class _UploadTugasState extends State<UploadTugas> {
       print("Error imge berasal dari Gallery: $e");
     }
     }
-
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(title: Text('Upload Tugas')),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _imageFile !=null
+              ? Image.file(_imageFile!, height: 200)
+              : Text("Belum ada foto  yang  terpilih"),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _ambilFotoTugas,
+                child: Text('Ambil Dari Foto'),
+              ),
+              ElevatedButton(
+                onPressed:  _ambilDariGaleri,
+                child:  Text('Ambil Dari Galeri'),
+              )
+            ],
+          )
+        ),
+      );
+    }
   }

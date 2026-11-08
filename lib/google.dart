@@ -1,8 +1,7 @@
-import  'dart:convert';
+import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
-
 
 class GoogleAuthResult {
   final bool isSuccess;
@@ -17,31 +16,19 @@ class GoogleAuthResult {
 }
 
 class GoogleAuthService {
-  static final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
+  static final GoogleSignIn _googleSignIn = GoogleSignIn(
+    serverClientId: '309023960778-874gbh2s7a3uval6vonl9eoo5v43ej60.apps.googleusercontent.com',
+    scopes: ['email', 'profile'],
+  );
+  
   static const String _apiUrl = "http://10.0.2.2/todolist/google_login.php";
-  static bool _isInitialized = false;
-
-  /// Inisialisasi konfigurasi Google Sign-In
-  static Future<void> _initGoogleSignIn() async {
-    if (!_isInitialized) {
-      try {
-        await _googleSignIn.initialize(
-          serverClientId: '309023960778-874gbh2s7a3uval6vonl9eoo5v43ej60.apps.googleusercontent.com',
-        );
-        _isInitialized = true;
-      } catch (e) {
-        debugPrint("Init Google Error: $e");
-      }
-    }
-  }
 
   /// Fungsi untuk login menggunakan akun Google
   static Future<GoogleAuthResult> signInWithGoogle() async {
     try {
-      await _initGoogleSignIn();
+      // 1. Memicu dialog otentikasi Google (Standard Sign-In API kompatibel di semua Google Play Services)
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
 
-      // Memicu dialog otentikasi Google
-      final GoogleSignInAccount? googleUser = await _googleSignIn.authenticate();
       if (googleUser == null) {
         return GoogleAuthResult(
           isSuccess: false,
@@ -49,10 +36,10 @@ class GoogleAuthService {
         );
       }
 
-      final GoogleSignInAuthentication googleAuth = googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
       final String? idToken = googleAuth.idToken;
 
-      // Jika idToken tidak tersedia atau backend offline, tetap izinkan login akun Google
+      // Jika idToken null atau backend offline, tetap izinkan login ke aplikasi
       if (idToken == null) {
         return GoogleAuthResult(
           isSuccess: true,
@@ -83,7 +70,7 @@ class GoogleAuthService {
           );
         }
       } catch (_) {
-        // Fallback jika backend offline
+        // Fallback jika backend PHP offline
       }
 
       return GoogleAuthResult(
@@ -100,7 +87,7 @@ class GoogleAuthService {
       debugPrint("Error Google Sign-In: $error");
       return GoogleAuthResult(
         isSuccess: false,
-        message: "Google Sign-In Info: $error",
+        message: "Google Sign-In: $error",
       );
     }
   }

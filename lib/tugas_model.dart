@@ -2,12 +2,12 @@ class Tugas {
   final String id;
   final String namaTugas;
   final String mataPelajaran;
-  bool isDiserhakan;
+  bool isDiserahkan;
 
   Tugas({
     required this.id,
     required this.namaTugas,
     required this.mataPelajaran,
-    this.isDiserhakan = false,
-});
+    this.isDiserahkan = false,
+  });
 }

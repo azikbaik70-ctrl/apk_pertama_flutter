@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:apk_pertama/tugas_model.dart';
 
 class MemasukanTugas extends StatefulWidget {
-  const MemasukanTugas({super.key});
+  final ValueNotifier<List<Tugas>>? daftarTugasNotifier;
+
+  const MemasukanTugas({super.key, this.daftarTugasNotifier});
 
   @override
   State<MemasukanTugas> createState() => _MemasukanTugasState();
@@ -24,6 +27,23 @@ class _MemasukanTugasState extends State<MemasukanTugas> {
       });
       _namaTugasController.clear();
       _deadlineController.clear();
+    }
+  }
+
+  void _serahkanTugasMTK() {
+    if (widget.daftarTugasNotifier != null) {
+      List<Tugas> tugasTerupdate = List.from(widget.daftarTugasNotifier!.value);
+      int index = tugasTerupdate.indexWhere((tugas) => tugas.id == 'mtk-01');
+      if (index != -1) {
+        tugasTerupdate[index].isDiserahkan = true;
+        widget.daftarTugasNotifier!.value = tugasTerupdate;
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Tugas MTK berhasil diserahkan!"),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
     }
   }
 
@@ -87,6 +107,22 @@ class _MemasukanTugasState extends State<MemasukanTugas> {
               ),
             ),
           ),
+          if (widget.daftarTugasNotifier != null) ...[
+            const SizedBox(height: 15),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: _serahkanTugasMTK,
+                icon: const Icon(Icons.check_circle),
+                label: const Text("Serahkan & Sesuaikan Tugas MTK"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.all(12),
+                ),
+              ),
+            ),
+          ],
         ],
       ),
     );

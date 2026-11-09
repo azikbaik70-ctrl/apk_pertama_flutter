@@ -1,7 +1,7 @@
+import 'package:apk_pertama/tugas_model.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:apk_pertama/memasukan_tugas.dart';
-
 class TugasSiswa extends StatefulWidget {
   const TugasSiswa({super.key});
 
@@ -24,6 +24,7 @@ class ItemTugas {
     required this.tanggalDibuat,
   });
 }
+
 
 class _TugasSiswaState extends State<TugasSiswa> {
   int indexSubMenu = 0;
@@ -453,7 +454,10 @@ class _TugasSiswaState extends State<TugasSiswa> {
   // =====================================================
   Widget halamanDetail(ItemTugas tugas) {
     final warna = tugas.isSelesai ? Colors.green : Colors.orange;
-    final selisihHari = DateTime.now().difference(tugas.tanggalDibuat).inDays;
+    final selisihHari = DateTime
+        .now()
+        .difference(tugas.tanggalDibuat)
+        .inDays;
 
     return Container(
       key: const ValueKey('detail'),
@@ -561,7 +565,7 @@ class _TugasSiswaState extends State<TugasSiswa> {
                   const SizedBox(width: 8),
                   Text(
                     "Dibuat: ${formatTanggal(tugas.tanggalDibuat)} "
-                    "($selisihHari hari lalu)",
+                        "($selisihHari hari lalu)",
                     style: const TextStyle(fontWeight: FontWeight.w500),
                   ),
                 ],

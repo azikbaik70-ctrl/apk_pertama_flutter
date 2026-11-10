@@ -1,0 +1,24 @@
+class UserStreak {
+  final int currentStreak;
+  final int highestStreak;
+  final DateTime? lastSubmissionDate;
+
+  UserStreak({
+    required this.currentStreak,
+    required this.highestStreak,
+    this.lastSubmissionDate,
+  });
+
+  /
+  UserStreak copyWith({
+    int? currentStreak,
+    int? highestStreak,
+    DateTime? lastSubmissionDate,
+  }) {
+    return UserStreak(
+      current_streak: currentStreak ?? this.currentStreak,
+      highest_streak: highestStreak ?? this.highestStreak,
+      last_submission_date: lastSubmissionDate ?? this.lastSubmissionDate,
+    );
+  }
+}

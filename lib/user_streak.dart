@@ -9,16 +9,15 @@ class UserStreak {
     this.lastSubmissionDate,
   });
 
-  /
   UserStreak copyWith({
     int? currentStreak,
     int? highestStreak,
     DateTime? lastSubmissionDate,
   }) {
     return UserStreak(
-      current_streak: currentStreak ?? this.currentStreak,
-      highest_streak: highestStreak ?? this.highestStreak,
-      last_submission_date: lastSubmissionDate ?? this.lastSubmissionDate,
+      currentStreak: currentStreak ?? this.currentStreak,
+      highestStreak: highestStreak ?? this.highestStreak,
+      lastSubmissionDate: lastSubmissionDate ?? this.lastSubmissionDate,
     );
   }
 }

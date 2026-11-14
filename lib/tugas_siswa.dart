@@ -2,6 +2,7 @@ import 'package:apk_pertama/tugas_model.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:apk_pertama/memasukan_tugas.dart';
+import 'streak_dashboard.dart';
 class TugasSiswa extends StatefulWidget {
   const TugasSiswa({super.key});
 

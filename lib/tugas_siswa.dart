@@ -38,7 +38,7 @@ class TugasSiswaState extends State<TugasSiswa> {
   bool _sedangMengecek = false;
   String? _hasilValidasiAI;
 
-  final String _apiKey = 'AQ.Ab8RN6JE5KyoTYJUSCB0TRzRiZ6Yf0BA01WKB27Ad15n_d44ng';
+
 
   final Map<String, Map<String, dynamic>> opsiFilter = {
     'semua': {'label': 'Semua', 'hari': null, 'warna': Colors.purple},

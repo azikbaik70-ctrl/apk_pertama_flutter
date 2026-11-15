@@ -1,13 +1,14 @@
 import 'package:apk_pertama/tugas_model.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:apk_pertama/memasukan_tugas.dart';
+import 'package:provider/provider.dart';
+import 'package:apk_pertama/streak_provider.dart';
 import 'streak_dashboard.dart';
 class TugasSiswa extends StatefulWidget {
   const TugasSiswa({super.key});
 
   @override
-  State<TugasSiswa> createState() => _TugasSiswaState();
+  State<TugasSiswa> createState() => TugasSiswaState();
 }
 
 class ItemTugas {
@@ -27,12 +28,17 @@ class ItemTugas {
 }
 
 
-class _TugasSiswaState extends State<TugasSiswa> {
+class TugasSiswaState extends State<TugasSiswa> {
   int indexSubMenu = 0;
   String filterWaktuAktif = 'semua';
 
   // null = tampil halaman daftar, terisi = tampil halaman detail
   ItemTugas? tugasDipilih;
+  File? _fotoTugasSiswa;
+  bool _sedangMengecek = false;
+  String? _hasilValidasiAI;
+
+  final String _apiKey = 'AQ.Ab8RN6JE5KyoTYJUSCB0TRzRiZ6Yf0BA01WKB27Ad15n_d44ng';
 
   final Map<String, Map<String, dynamic>> opsiFilter = {
     'semua': {'label': 'Semua', 'hari': null, 'warna': Colors.purple},
@@ -338,10 +344,17 @@ class _TugasSiswaState extends State<TugasSiswa> {
                                           message: "Klik untuk ubah status",
                                           child: InkWell(
                                             customBorder: const CircleBorder(),
-                                            onTap: () => setState(
-                                              () => tugas.isSelesai =
-                                                  !tugas.isSelesai,
-                                            ),
+                                            onTap: () {
+                                              setState(() {
+                                                tugas.isSelesai = !tugas.isSelesai;
+                                              });
+                                              if (tugas.isSelesai && mounted) {
+                                                context.read<StreakProvider>().submitTask(
+                                                  submissionTime: DateTime.now(),
+                                                  deadline: DateTime.now().add(const Duration(hours: 2)),
+                                                );
+                                              }
+                                            },
                                             child: Container(
                                               padding: const EdgeInsets.all(10),
                                               decoration: BoxDecoration(

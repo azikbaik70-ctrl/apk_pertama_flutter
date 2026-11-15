@@ -2,6 +2,8 @@ import 'dart:ui';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:apk_pertama/streak_provider.dart';
 import 'package:apk_pertama/tugas_siswa.dart';
 import 'package:apk_pertama/Catatan_semua_mapel.dart';
 import 'package:apk_pertama/materi_yang_dipelajarin.dart';
@@ -10,7 +12,14 @@ import 'package:apk_pertama/Siswa_Siswi.dart';
 import 'package:apk_pertama/guru.dart';
 import 'package:apk_pertama/routers.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => StreakProvider(),
+      child: const MyApp(),
+    ),
+  );
+}
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

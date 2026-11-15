@@ -36,7 +36,7 @@
 - file yang di tugas_siswa.dart itu make data dami jadi saat masih di localhost kita ngbuat data dami yaitu menambahkan tugas padahal seharusnya  itu tugas  guru nah kalo udah di publish / jalan di di production itu bakalan di rubah menjadi data asli dan tidak memasukan data dami lagi yang tadi jadi hanya untuk sementara 
 
 #### Ticket yang sedang berjalan 
-- Tiket 9
+- Tiket 6
 
 #### Ticket yang sudah di selsesaikan 
 - Tiket 3
@@ -44,3 +44,5 @@
 - Tiket 2
 - Tiket 1
 - Tiket 8
+- Tiket 9
+- Tiket 5

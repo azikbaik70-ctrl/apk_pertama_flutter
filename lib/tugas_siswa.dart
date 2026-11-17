@@ -32,11 +32,7 @@ class TugasSiswaState extends State<TugasSiswa> {
   int indexSubMenu = 0;
   String filterWaktuAktif = 'semua';
 
-  // null = tampil halaman daftar, terisi = tampil halaman detail
   ItemTugas? tugasDipilih;
-  File? _fotoTugasSiswa;
-  bool _sedangMengecek = false;
-  String? _hasilValidasiAI;
 
 
 
@@ -61,7 +57,7 @@ class TugasSiswaState extends State<TugasSiswa> {
     {"nama": "B.Sunda", "kode": "B.SUNDA"},
   ];
  
-  // Ikon untuk tiap mapel (berdasarkan kode)
+ // Ikon untuk tiap mapel (berdasarkan kode)
   final Map<String, IconData> ikonMapel = {
     
     'IPA': Icons.science,

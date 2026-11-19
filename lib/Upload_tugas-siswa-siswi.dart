@@ -7,13 +7,13 @@ class UploadTugas extends StatefulWidget {
   const UploadTugas({super.key});
 
   @override
-   State<UploadTugas> createState() => _UploadTugasState();
+   State<UploadTugas> createState() => UploadTugasState();
 }
-class _UploadTugasState extends State<UploadTugas> {
+class UploadTugasState extends State<UploadTugas> {
   File? _imageFile;
   final ImagePicker _picker = ImagePicker();
 
-  Future<void> _ambilFotoTugas(ImageSource source) async {
+  Future<void> ambilFotoTugas(ImageSource source) async {
     try {
       final XFile? pickedFile = await _picker.pickImage(
         source: ImageSource.camera,
@@ -28,7 +28,7 @@ class _UploadTugasState extends State<UploadTugas> {
        print("Error picking image: $e");
       }
     }
-    void _tampilkanPilihanSumber() {
+    void tampilkanPilihanSumber() {
     showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
@@ -50,7 +50,7 @@ class _UploadTugasState extends State<UploadTugas> {
                 title: Text('Kamera'),
                 onTap: () {
                   Navigator.of(context).pop();
-                  _ambilFotoTugas(ImageSource.camera);
+                 ambilFotoTugas(ImageSource.camera);
                 },
               ),
               ListTile(
@@ -58,7 +58,7 @@ class _UploadTugasState extends State<UploadTugas> {
                 title: Text('Galeri'),
                 onTap: () {
                   Navigator.of(context).pop();
-                  _ambilFotoTugas(ImageSource.gallery);
+                  ambilFotoTugas(ImageSource.gallery);
                 },
               ),
             ],
@@ -93,7 +93,7 @@ class _UploadTugasState extends State<UploadTugas> {
               SizedBox(height: 30),
 
                 ElevatedButton.icon(
-                  onPressed: _tampilkanPilihanSumber,
+                  onPressed: tampilkanPilihanSumber,
                   icon: Icon(Icons.add_a_photo),
                   label: Text('Pilih Foto Tugas'),
                   style: ElevatedButton.styleFrom(

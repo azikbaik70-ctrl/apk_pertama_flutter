@@ -11,8 +11,14 @@ import 'package:apk_pertama/memasukan_tugas.dart';
 import 'package:apk_pertama/Siswa_Siswi.dart';
 import 'package:apk_pertama/guru.dart';
 import 'package:apk_pertama/routers.dart';
-
-void main() {
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+Future<void> main() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    try {
+    await dotenv.load(fileName: ".env");
+} catch (e) {
+  debugPrint("Info DotEnv: $e");
+}
   runApp(
     ChangeNotifierProvider(
       create: (_) => StreakProvider(),

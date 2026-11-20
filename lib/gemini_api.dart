@@ -7,14 +7,15 @@ import 'package:image_picker/image_picker.dart';
 import 'package:apk_pertama/tugas_siswa.dart';
 import 'package:apk_pertama/Upload_tugas-siswa-siswi.dart';
 class HalamanTugasSiswa extends StatefulWidget{
-  const HalamanTugasSiswa({super.key})
+  const HalamanTugasSiswa({super.key});
 
   @override
   State<HalamanTugasSiswa> createState() => _HalamanTugasSiswaState();
 }
+// Syntax final FotoTugas = ... itu mengambil dari file Upload_tugas-siswa-siswi.dart
 class _HalamanTugasSiswaState extends State<HalamanTugasSiswa> {
   final  halamanTugas = TugasSiswaState().masterDaftarTugas;
-  final FotoTugas =  UploadTugasState().ambilFotoTugas;
+  final _FotoTugas =  UploadTugasState().ambilFotoTugas;
 
   File? _fotoTugasSiswa;
   bool _sedangMengecek = false;
@@ -22,7 +23,7 @@ class _HalamanTugasSiswaState extends State<HalamanTugasSiswa> {
 
   final String _apiKey =  dotenv.env['AQ.Ab8RN6JE5KyoTYJUSCB0TRzRiZ6Yf0BA01WKB27Ad15n_d44ng'] ?? '';
 
-  Future<void> FotoTugas() async {
+  Future<void> _pilihFotoTugas() async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
@@ -60,6 +61,77 @@ class _HalamanTugasSiswaState extends State<HalamanTugasSiswa> {
       Status: [SESUAI / TIDAK SESUAI]
       Alasan: [Penjelasan singkat]
       ''';
+
+        final Uint8List imageBytes= await _fotoTugasSiswa!.readAsBytesSync();
+
+        final response = await model.generateContent([
+          Content.multi([
+            TextPart(prompt),
+            DataPart('image/jpeg', imageBytes),
+          ])
+        ]);
+        setState(() {
+          _hasilValidasiAI = response.text;
+        });
+    } catch (e) {
+      setState(() {
+        _hasilValidasiAI = "Terjadi Kesalahan saat Memeriksa tugas: $e";
+      });
+    } finally {
+      setState(() {
+        _sedangMengecek = false;
+      });
     }
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Detail Tugas Siswa-Siswi")),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment:   CrossAxisAlignment.start,
+            children: [
+              Text("$halamanTugas", style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+              const SizedBox(height: 8),
+
+              if (_fotoTugasSiswa !=null)
+                Image.file(_fotoTugasSiswa!, height: 200, fit: BoxFit.cover)
+           else
+            Container(
+           height: 150,
+           width: double.infinity,
+            color: Colors.grey[200],
+            child: const Center(child: Text("Belum ada foto tugas yang dipilih")),
+        ),
+              const SizedBox(height: 16),
+
+              if (_sedangMengecek)
+                const Center(child: CircularProgressIndicator())
+              else if (_hasilValidasiAI !=null)
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: _hasilValidasiAI!.contains("TIDAK SESUAI")
+                        ? Colors.red[50]
+                        : Colors.green[50],
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: _hasilValidasiAI!.contains("TIDAK SESUAI")
+                          ? Colors.red
+                          : Colors.green,
+                    ),
+                  ),
+                  child: Text(
+                    _hasilValidasiAI!,
+                    style: const TextStyle(fontSize: 15),
+                  ),
+                )
+            ],
+          ),
+        )
+      )
+    );
   }
 }

@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:http/http.dart' as http;
 
 class GoogleAuthResult {
   final bool isSuccess;
@@ -17,16 +15,18 @@ class GoogleAuthResult {
 
 class GoogleAuthService {
   static final GoogleSignIn _googleSignIn = GoogleSignIn(
-    serverClientId: '309023960778-874gbh2s7a3uval6vonl9eoo5v43ej60.apps.googleusercontent.com',
     scopes: ['email', 'profile'],
   );
-  
-  static const String _apiUrl = "http://10.0.2.2/todolist/google_login.php";
 
   /// Fungsi untuk login menggunakan akun Google
   static Future<GoogleAuthResult> signInWithGoogle() async {
     try {
-      // 1. Memicu dialog otentikasi Google (Standard Sign-In API kompatibel di semua Google Play Services)
+      // 1. Bersihkan sesi lama di HP
+      try {
+        await _googleSignIn.signOut();
+      } catch (_) {}
+
+      // 2. Memicu dialog pemilih akun Google
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
 
       if (googleUser == null) {
@@ -36,49 +36,13 @@ class GoogleAuthService {
         );
       }
 
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-      final String? idToken = googleAuth.idToken;
-
-      // Jika idToken null atau backend offline, tetap izinkan login ke aplikasi
-      if (idToken == null) {
-        return GoogleAuthResult(
-          isSuccess: true,
-          message: "Login Google Berhasil!",
-          userData: {
-            "user": {
-              "nama": googleUser.displayName ?? googleUser.email,
-              "email": googleUser.email,
-            }
-          },
-        );
-      }
-
-      try {
-        final response = await http.post(
-          Uri.parse(_apiUrl),
-          headers: {"Content-Type": "application/json"},
-          body: jsonEncode({"idToken": idToken}),
-        ).timeout(const Duration(seconds: 4));
-
-        final data = jsonDecode(response.body);
-
-        if (response.statusCode == 200 && data['status'] == 'success') {
-          return GoogleAuthResult(
-            isSuccess: true,
-            message: "Login Berhasil!",
-            userData: data,
-          );
-        }
-      } catch (_) {
-        // Fallback jika backend PHP offline
-      }
-
+      // 3. LANGSUNG BERHASIL MASUK DENGAN NAMA & EMAIL AKUN GOOGLE
       return GoogleAuthResult(
         isSuccess: true,
         message: "Login Google Berhasil!",
         userData: {
           "user": {
-            "nama": googleUser.displayName ?? googleUser.email,
+            "nama": googleUser.displayName ?? googleUser.email.split('@')[0],
             "email": googleUser.email,
           }
         },
@@ -87,7 +51,7 @@ class GoogleAuthService {
       debugPrint("Error Google Sign-In: $error");
       return GoogleAuthResult(
         isSuccess: false,
-        message: "Google Sign-In: $error",
+        message: "Google Sign-In Info: $error",
       );
     }
   }

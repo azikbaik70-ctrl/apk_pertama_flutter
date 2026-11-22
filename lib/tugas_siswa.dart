@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:apk_pertama/streak_provider.dart';
 import 'streak_dashboard.dart';
+import 'package:apk_pertama/Upload_tugas-siswa-siswi.dart';
 class TugasSiswa extends StatefulWidget {
   const TugasSiswa({super.key});
 
@@ -651,6 +652,28 @@ class TugasSiswaState extends State<TugasSiswa> {
                 ),
                 onPressed: () =>
                     setState(() => tugas.isSelesai = !tugas.isSelesai),
+              ),
+
+            ),
+            const SizedBox(height: 12),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.purple,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                ),
+                icon: const Icon(Icons.add_a_photo),
+                label: const Text("Upload Foto Bukti (Kamera / Galeri)"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const UploadTugas(),
+                    ),
+                  );
+                },
               ),
             ),
           ],

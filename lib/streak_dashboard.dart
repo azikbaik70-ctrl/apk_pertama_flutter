@@ -7,7 +7,7 @@ import 'tugas_siswa.dart';
 class StreakDashboard extends StatelessWidget {
   const StreakDashboard({super.key});
 
-  void _showStreakPopup(BuildContext context, int currentStreak) {
+  void showStreakPopup(BuildContext context, int currentStreak) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -136,7 +136,7 @@ class StreakDashboard extends StatelessWidget {
                   submissionTime: DateTime.now(),
                   deadline: DateTime.now().add(const Duration(hours: 2)),
                 );
-                _showStreakPopup(context, provider.streak.currentStreak);
+                showStreakPopup(context, provider.streak.currentStreak);
               },
             ),
             const SizedBox(height: 12),

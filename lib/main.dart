@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -12,13 +13,22 @@ import 'package:apk_pertama/Siswa_Siswi.dart';
 import 'package:apk_pertama/guru.dart';
 import 'package:apk_pertama/routers.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:apk_pertama/streak_dashboard.dart';
+import 'package:apk_pertama/streak_badge.dart';
+
 Future<void> main() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    try {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.black,
+      systemNavigationBarIconBrightness: Brightness.light,
+    ),
+  );
+  try {
     await dotenv.load(fileName: ".env");
-} catch (e) {
-  debugPrint("Info DotEnv: $e");
-}
+  } catch (e) {
+    debugPrint("Info DotEnv: $e");
+  }
   runApp(
     ChangeNotifierProvider(
       create: (_) => StreakProvider(),
@@ -81,8 +91,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-    title: 'Aplikasi SMPN 1 BOGOR',
-    initialRoute: AppRouters.login,
+      title: 'Aplikasi SMPN 1 BOGOR',
+      initialRoute: AppRouters.login,
       routes: AppRouters.routes,
       debugShowCheckedModeBanner: false,
     );
@@ -124,62 +134,21 @@ class _HalamanUtamaState extends State<HalamanUtama> {
     final bool isMobile = MediaQuery.of(context).size.width < 600;
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(44.0),
-        child: ClipRRect(
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 11.0, sigmaY: 11.0),
-            child: AppBar(
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    width: 12,
-                    height: 12,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.withValues(alpha: 0.3),
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                  const SizedBox(width: 11),
-                  Container(
-                    width: 12,
-                    height: 12,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.withValues(alpha: 0.4),
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                  const SizedBox(width: 11),
-                  Container(
-                    width: 12,
-                    height: 12,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.withValues(alpha: 0.4),
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                  const SizedBox(width: 11),
-                  const Text(
-                    'SMP Negeri 1 Bogor',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
-                  ),
-                ],
-              ),
-              backgroundColor: Colors.grey.withValues(alpha: 0.2),
-              foregroundColor: Colors.black,
-              elevation: 0,
-              bottom: PreferredSize(
-                preferredSize: const Size.fromHeight(1.0),
-                child: Container(
-                  color: Colors.grey.withValues(alpha: 0.2),
-                  height: 1.0,
-                ),
-              ),
-            ),
-          ),
+      appBar: AppBar(
+        title: const Text(
+          'SMP Negeri 1 Bogor',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
+        centerTitle: true,
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 12.0),
+            child: Center(child: Streakbadge()),
+          ),
+        ],
+        backgroundColor: Colors.purple.shade900,
+        foregroundColor: Colors.white,
+        elevation: 2,
       ),
       body: isMobile
           ? _dapatkanHalaman(indexMenu)

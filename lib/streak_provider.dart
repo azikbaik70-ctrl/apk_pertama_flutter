@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'user_streak.dart';
 
 class StreakProvider  extends ChangeNotifier{
-  UserStreak _streak = UserStreak(currentStreak: 3, highestStreak: 3);
+  UserStreak _streak = UserStreak(currentStreak: 0, highestStreak: 0);
   UserStreak get streak => _streak;
 
   void submitTask({required DateTime submissionTime, required DateTime deadline}) {

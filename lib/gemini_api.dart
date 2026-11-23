@@ -10,10 +10,10 @@ class HalamanTugasSiswa extends StatefulWidget{
   const HalamanTugasSiswa({super.key});
 
   @override
-  State<HalamanTugasSiswa> createState() => _HalamanTugasSiswaState();
+  State<HalamanTugasSiswa> createState() => HalamanTugasSiswaState();
 }
 // Syntax final FotoTugas = ... itu mengambil dari file Upload_tugas-siswa-siswi.dart
-class _HalamanTugasSiswaState extends State<HalamanTugasSiswa> {
+class HalamanTugasSiswaState extends State<HalamanTugasSiswa> {
   final  halamanTugas = TugasSiswaState().masterDaftarTugas;
   final _FotoTugas =  UploadTugasState().ambilFotoTugas;
 

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:apk_pertama/streak_provider.dart';
 import 'streak_dashboard.dart';
 import 'package:apk_pertama/Upload_tugas-siswa-siswi.dart';
+import 'package:apk_pertama/gemini_api.dart'
 class TugasSiswa extends StatefulWidget {
   const TugasSiswa({super.key});
 
@@ -671,6 +672,7 @@ class TugasSiswaState extends State<TugasSiswa> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => const UploadTugas(),
+                      const: HalamanTugasSiswaState();
                     ),
                   );
                 },

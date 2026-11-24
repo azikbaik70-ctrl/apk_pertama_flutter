@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:apk_pertama/streak_provider.dart';
 import 'streak_dashboard.dart';
 import 'package:apk_pertama/Upload_tugas-siswa-siswi.dart';
-import 'package:apk_pertama/gemini_api.dart'
+import 'package:apk_pertama/gemini_api.dart';
 class TugasSiswa extends StatefulWidget {
   const TugasSiswa({super.key});
 
@@ -665,17 +665,24 @@ class TugasSiswaState extends State<TugasSiswa> {
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
+
                 icon: const Icon(Icons.add_a_photo),
                 label: const Text("Upload Foto Bukti (Kamera / Galeri)"),
+
+                const SizedBox(height: 12),
+                  ElevatedButton.icon(
+                    onPressed:   _hasilValidasiAI;, // Memicu deteksi AI Gemini
+                    icon: const Icon(Icons.psychology),
+                    label: const Text("Periksa Tugas Sekarang (AI Gemini)"),
+                  ),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const UploadTugas(),
-                      const: HalamanTugasSiswaState();
-                    ),
+                  MaterialPageRoute(
+                    builder: (context) => const UploadTugas(),
+                  )
                   );
-                },
+                      }
               ),
             ),
           ],

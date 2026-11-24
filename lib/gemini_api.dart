@@ -19,7 +19,7 @@ class HalamanTugasSiswaState extends State<HalamanTugasSiswa> {
 
   File? _fotoTugasSiswa;
   bool _sedangMengecek = false;
-  String? _hasilValidasiAI;
+  String? hasilValidasiAI;
 
   final String _apiKey =  dotenv.env['AQ.Ab8RN6JE5KyoTYJUSCB0TRzRiZ6Yf0BA01WKB27Ad15n_d44ng'] ?? '';
 
@@ -30,7 +30,7 @@ class HalamanTugasSiswaState extends State<HalamanTugasSiswa> {
     if (pickedFile != null) {
       setState(() {
         _fotoTugasSiswa = File(pickedFile.path);
-        _hasilValidasiAI = null;
+        hasilValidasiAI = null;
       });
     }
   }
@@ -71,11 +71,11 @@ class HalamanTugasSiswaState extends State<HalamanTugasSiswa> {
           ])
         ]);
         setState(() {
-          _hasilValidasiAI = response.text;
+          hasilValidasiAI = response.text;
         });
     } catch (e) {
       setState(() {
-        _hasilValidasiAI = "Terjadi Kesalahan saat Memeriksa tugas: $e";
+        hasilValidasiAI = "Terjadi Kesalahan saat Memeriksa tugas: $e";
       });
     } finally {
       setState(() {
@@ -109,22 +109,22 @@ class HalamanTugasSiswaState extends State<HalamanTugasSiswa> {
 
               if (_sedangMengecek)
                 const Center(child: CircularProgressIndicator())
-              else if (_hasilValidasiAI !=null)
+              else if (hasilValidasiAI !=null)
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: _hasilValidasiAI!.contains("TIDAK SESUAI")
+                    color: hasilValidasiAI!.contains("TIDAK SESUAI")
                         ? Colors.red[50]
                         : Colors.green[50],
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
-                      color: _hasilValidasiAI!.contains("TIDAK SESUAI")
+                      color: hasilValidasiAI!.contains("TIDAK SESUAI")
                           ? Colors.red
                           : Colors.green,
                     ),
                   ),
                   child: Text(
-                    _hasilValidasiAI!,
+                    hasilValidasiAI!,
                     style: const TextStyle(fontSize: 15),
                   ),
                 )

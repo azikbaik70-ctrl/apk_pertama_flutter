@@ -669,12 +669,6 @@ class TugasSiswaState extends State<TugasSiswa> {
                 icon: const Icon(Icons.add_a_photo),
                 label: const Text("Upload Foto Bukti (Kamera / Galeri)"),
 
-                const SizedBox(height: 12),
-                  ElevatedButton.icon(
-                    onPressed:   _hasilValidasiAI;, // Memicu deteksi AI Gemini
-                    icon: const Icon(Icons.psychology),
-                    label: const Text("Periksa Tugas Sekarang (AI Gemini)"),
-                  ),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -685,6 +679,7 @@ class TugasSiswaState extends State<TugasSiswa> {
                       }
               ),
             ),
+
           ],
         ),
       ),

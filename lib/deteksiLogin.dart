@@ -1,32 +1,35 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 
-Future<void> loginUser(BuildContext context, String email, String Password) async{
-  final url = Uri.parse('http://127.0.0.1:8080');
+Future<void> loginUser(BuildContext context, String email, String password) async {
+  final url = Uri.parse('http://10.0.2.2:8080/api/login');
 
-  try {
-    final response = await http.post(
-      url,
-      body: {
-        'email' : email,
-        'password' : password,
-      },
-    );
+   try {
+  final response = await http.post(
+    url,
+    headers: {
+      'Accept': 'application/json',
+      // Wajib agar Laravel selalu membalas dengan JSON
+    },
+    body: {
+      'email': email,
+      'password': password,
+    },
+  );
+
+  if (response.statusCode == 200) {
     final data = jsonDecode(response.body);
+    debugPrint("Login Berhasil: $data");
+    // Navigator.pushReplacementNamed(context, '/home');
+  } else {
+    debugPrint("Login Gagal. Status Code: ${response.statusCode}");
+  }
 
-    if(response.statusCode == 200 && data ['status' == 'success']) {
-      Navigator.pushReplacementNamed(context, '/home');
-
-    } else if (data['status'] == 'not_registered') {
-      _showUnregisteredDialog(context, data['message']);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(data['message'] ?? 'Terjadi Kesalahan'),
-          backgroundColor: Colors.red,
-        )
-      );
-    }
-  } catch
+} catch (e) {
+debugPrint("Error HTTP: $e");
 }
+}
+
+
+
